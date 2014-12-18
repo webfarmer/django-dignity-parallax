@@ -7,7 +7,6 @@ class ProductCostInline(admin.TabularInline):
 
 class ProductAdmin(admin.ModelAdmin):
     inlines = [ProductCostInline,]
-
     prepopulated_fields = {'slug': ('title',)}
     search_fields = ['title', 'content']
     list_display = ('title', 'slug', 'display')
@@ -15,7 +14,7 @@ class ProductAdmin(admin.ModelAdmin):
     list_editable = ('display','slug',)
     fieldsets = (
         (None, {
-            'fields': (('display','title','slug',),'image',),
+            'fields': ('site',('display','title','slug',),"category",'image',),
             }),
             ("Meta Details", {
                 'classes': ('collapse',),
@@ -23,14 +22,12 @@ class ProductAdmin(admin.ModelAdmin):
             }),
     )
 admin.site.register(Product, ProductAdmin)
-
 admin.site.register(Order)
+
 
 
 class ProductNoAdmin(admin.ModelAdmin):
     def get_model_perms(self, request):
-        """Return empty perms dict thus hiding the model from admin index."""
         return {}
-
 admin.site.register(ProductType, ProductNoAdmin)
 admin.site.register(ProductSize, ProductNoAdmin)

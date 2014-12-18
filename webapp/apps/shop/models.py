@@ -3,6 +3,20 @@ from django.contrib.sites.models import Site
 from django.db import models
 
 
+
+class HeaderImage(models.Model):
+    site = models.ForeignKey(Site, related_name="site_config")
+    image = models.FileField(verbose_name="Image", upload_to='upload/image/', blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        verbose_name = "Image"
+        verbose_name_plural = "Images"
+
+# ------------------------------------------------------------------------------------------------------------------------
+
 class Category(models.Model):
     site = models.ForeignKey(Site, related_name="site_category")
     title = models.CharField(max_length=255)
@@ -11,6 +25,7 @@ class Category(models.Model):
 
     def __unicode__(self):
         return "%s - %s" % (self.site, self.title)
+
 
 class Product(models.Model):
     site = models.ForeignKey(Site, related_name="site_product")
@@ -41,7 +56,6 @@ class Product(models.Model):
         return self.title
 
 
-
 class ProductType(models.Model):
     title = models.CharField(max_length=255)
 
@@ -67,7 +81,6 @@ class ProductImage(models.Model):
 
     class Meta:
         ordering = ["description"]
-
 
 
 class ProductSize(models.Model):
@@ -100,6 +113,7 @@ class ProductCost(models.Model):
     def __unicode__(self):
         return self.product.title
 
+# ------------------------------------------------------------------------------------------------------------------------
 
 class Order(models.Model):
     site = models.ForeignKey(Site, related_name="site_order")

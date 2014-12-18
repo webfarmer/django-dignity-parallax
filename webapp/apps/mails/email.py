@@ -38,14 +38,14 @@ class myMailer():
         object = self.get_object()
 
         from_email, to = self.from_email, self.to
-        subject, html_content = object.get_translation().subject, object.get_translation().content
+        subject, html_content = object.subject, object.content
 
         if not self.subject:
             self.context['subject'] = strip_tags(Template(subject).render(self.context))
         else:
             self.context['subject'] = self.subject
 
-        html_content = '{% extends "emails/base.html" %}{% load image_product_cache %}{% block content %}' + html_content + '{% endblock %}'
+        html_content = '{% extends "mails/base.html" %}{% block content %}' + html_content + '{% endblock %}'
 
         if to:
             if not type(to) is list:

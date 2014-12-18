@@ -3,6 +3,9 @@ from django.utils import importlib
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'components'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'apps'))
+SITES_DIR = os.path.join(os.path.dirname(__file__), 'sites')
+sys.path.append(SITES_DIR)
+
 PROJECT_ROOT = os.path.dirname(__file__); PROJECT_DIR = PROJECT_ROOT
 
 PROJECT_NAME = "Tip Of The Tongue Agency"
@@ -14,6 +17,7 @@ DEBUG = True
 TEMPLATE_DEBUG = True
 
 MIDDLEWARE_CLASSES = (
+    'dynamicsites.middleware.DynamicSitesMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -134,6 +138,7 @@ TEMPLATE_LOADERS = (
 # ==============================================================================
 
 DJANGO_CONTRIB_APPS = (
+    'wpadmin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sites',
@@ -146,12 +151,14 @@ DJANGO_CONTRIB_APPS = (
 )
 
 APPS = (
+    'accounts',
     'parallax',
     'shop',
+    'mails',
+    'dynamicsites',
 )
 
 THIRD_PARTY_APPS = (
-    'dynamicsites',
     'easy_thumbnails',
     'debug_toolbar',
     'django_reset',
@@ -165,10 +172,17 @@ COMPONENTS = [name for name in os.listdir("%s/components/" % PROJECT_ROOT) if os
 
 INSTALLED_APPS = DJANGO_CONTRIB_APPS + THIRD_PARTY_APPS + tuple(APPS) + tuple(COMPONENTS)
 
-TEMPLATE_DIRS = [os.path.join(PROJECT_ROOT, 'templates'), ]
+TEMPLATE_DIRS = (os.path.join(PROJECT_DIR, 'templates'),)
+
 for app in APPS:
-    if os.path.isdir(os.path.join(PROJECT_ROOT, app, 'templates')):
-        TEMPLATE_DIRS.append(os.path.join(PROJECT_ROOT, app, 'templates'))
+    if os.path.isdir(os.path.join(PROJECT_DIR, app, 'templates')):
+        TEMPLATE_DIRS += (os.path.join(PROJECT_DIR, app, 'templates'),)
+
+    if os.path.isdir(os.path.join(PROJECT_DIR, app, 'templates/partials')):
+        TEMPLATE_DIRS += (os.path.join(PROJECT_DIR, app, 'templates/partials'),)
+
+    if os.path.isdir(os.path.join(PROJECT_DIR, app, 'templates/text')):
+        TEMPLATE_DIRS += (os.path.join(PROJECT_DIR, app, 'templates/text'),)
 
 for app in APPS:
     try:
@@ -212,6 +226,22 @@ USE_L10N = False
 USE_TZ = False
 SITE_ID = 1
 
+
+WPADMIN = {
+    'admin': {
+        'title': 'TOTTAgency Admin',
+        'menu': {
+            'top': 'wpadmin.menu.menus.BasicTopMenu',
+            'left': 'wpadmin.menu.menus.BasicLeftMenu',
+        },
+        'dashboard': {
+            'breadcrumbs': True,
+        },
+        'custom_style': STATIC_URL + 'wpadmin/css/themes/ectoplasm.css',
+    }
+}
+
+
 # ==============================================================================
 #  overrides settings
 # ==============================================================================
@@ -220,3 +250,7 @@ try:
 except ImportError:
     pass
 
+try:
+    from settings_sites import *
+except ImportError:
+    pass

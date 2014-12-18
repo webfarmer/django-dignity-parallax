@@ -1,6 +1,17 @@
 from django.contrib import admin
 from django.http import HttpResponseRedirect
-from models import BlockContent, Page, HomeConfig, HomeConfigHeaderImage
+from models import BlockContent, Page, ParallaxConfig, Contact
+
+
+class ParallaxConfigAdmin(admin.ModelAdmin):
+    def changelist_view(self, request, extra_context=None):
+       try:
+           location = '/admin/parallax/parallaxconfig/%d' % ParallaxConfig.objects.get_or_create(id=1, defaults={})[0].id
+           return HttpResponseRedirect(location)
+       except:
+           return super(ParallaxConfigAdmin, self).changelist_view(request, extra_context)
+
+admin.site.register(ParallaxConfig, ParallaxConfigAdmin)
 
 class BlockContentAdmin(admin.ModelAdmin):
     model = BlockContent
@@ -42,15 +53,6 @@ class PageAdmin(admin.ModelAdmin):
         )
 admin.site.register(Page, PageAdmin)
 
-class HomeConfigImageInline(admin.TabularInline):
-    model = HomeConfigHeaderImage
-
-class HomeConfigAdmin(admin.ModelAdmin):
-    inlines = [HomeConfigImageInline]
-    def changelist_view(self, request, extra_context=None):
-        try:
-            location = '/admin/parallax/homeconfig/%d' % HomeConfig.objects.filter()[0].id
-            return HttpResponseRedirect(location)
-        except:
-            return super(HomeConfigAdmin, self).changelist_view(request, extra_context)
-admin.site.register(HomeConfig, HomeConfigAdmin)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'last_name', 'email','contact_number',)
+admin.site.register(Contact, ContactAdmin)

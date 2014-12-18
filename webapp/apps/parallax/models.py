@@ -1,5 +1,72 @@
 from django.db import models
 
+
+
+class ParallaxConfig(models.Model):
+    main_image = models.FileField(verbose_name="Main Image", upload_to='upload/parallax/', blank=True, null=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        verbose_name = "Configurations"
+        verbose_name_plural = "Configurations"
+
+
+class Team(models.Model):
+    name = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, blank=False, null=True)
+    description = models.CharField(max_length=255, blank=False, null=True)
+
+    image = models.FileField(verbose_name="Image", upload_to='upload/team/', blank=True, null=True)
+
+    display = models.BooleanField(default=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Team"
+        verbose_name_plural = "Team"
+
+
+class Portfolio(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.CharField(max_length=255, blank=False, null=True)
+    display = models.BooleanField(default=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = "Team"
+        verbose_name_plural = "Team"
+
+class Contact(models.Model):
+    name = models.CharField(max_length=255)
+    last_name = models.CharField(max_length=255)
+    email = models.CharField(max_length=255)
+    contact_number = models.CharField(max_length=30)
+    message = models.CharField(max_length=255)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Contact Message"
+        verbose_name_plural = "Contact Messages"
+        ordering = ['-created_at']
+
+
 class BlockContent(models.Model):
     slug = models.SlugField(max_length=150)
     display = models.BooleanField(default=True, blank=True)
@@ -35,30 +102,3 @@ class Page(models.Model):
     class Meta:
         verbose_name = "Page"
         verbose_name_plural = "Pages"
-
-
-class HomeConfig(models.Model):
-    meta_title = models.CharField("Title",max_length=255, null=True, blank=True)
-    meta_description = models.CharField("Description",max_length=255, null=True, blank=True)
-    meta_keywords = models.CharField("Keywords",max_length=255, null=True, blank=True)
-
-    landing_image = models.FileField(verbose_name="Image", upload_to='upload/image/', blank=True, null=True)
-
-    created_at = models.DateTimeField(auto_now = True)
-    modified_at = models.DateTimeField(auto_now_add = True)
-
-    class Meta:
-        verbose_name = "Settings"
-        verbose_name_plural = "Settings"
-
-
-class HomeConfigHeaderImage(models.Model):
-    config = models.ForeignKey(HomeConfig)
-    image = models.FileField(verbose_name="Image", upload_to='upload/image/', blank=True, null=True)
-
-    created_at = models.DateTimeField(auto_now = True)
-    modified_at = models.DateTimeField(auto_now_add = True)
-
-    class Meta:
-        verbose_name = "Image"
-        verbose_name_plural = "Images"

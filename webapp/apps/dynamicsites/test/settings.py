@@ -5,28 +5,29 @@ SITES_DIR = os.path.join(os.path.dirname(__file__), 'sites')
 
 DEFAULT_HOST = 'www.corp-umbrella-site.com'
 HOSTNAME_REDIRECTS = {
-    'aboutfood.com':              'www.about-food.com',
-    'about-food.net':             'www.about-food.com',
-    'meats.about-food.com':       'meat.about-food.com',
-    'fruits.about-food.com':      'fruit.about-food.com',
-    'vegetable.about-food.com':   'vegetables.about-food.com',
-    'diary.about-food.com':       'dairy.about-food.com',
-    'restaurant.about-food.com':  'restaurants.about-food.com',
-    'dining.about-food.com':      'restaurants.about-food.com',
+    'aboutfood.com': 'www.about-food.com',
+    'about-food.net': 'www.about-food.com',
+    'meats.about-food.com': 'meat.about-food.com',
+    'fruits.about-food.com': 'fruit.about-food.com',
+    'vegetable.about-food.com': 'vegetables.about-food.com',
+    'diary.about-food.com': 'dairy.about-food.com',
+    'restaurant.about-food.com': 'restaurants.about-food.com',
+    'dining.about-food.com': 'restaurants.about-food.com',
     'carnes.sobre-comida.com.br': 'carne.sobre-comida.com.br',
     'frutas.sobre-comida.com.br': 'fruta.sobre-comida.com.br',
     'legume.sobre-comida.com.br': 'legumes.sobre-comida.com.br',
     'leites.sobre-comida.com.br': 'leite.sobre-comida.com.br',
-    'about-games.com':            'about.gam.es'
+    'about-games.com': 'about.gam.es'
 }
 
 DEV_HOSTNAMES = {
-    'cus.dev':    'corp-umbrella-site.com',
-    'af.dev':     'about-food.com',
+    'cus.dev': 'corp-umbrella-site.com',
+    'af.dev': 'about-food.com',
     'res.af.dev': 'restaurants.about-food.com',
-    'sc.dev':     'sobre-comida.com.br',
-    'ag.dev':     'about.gam.es'
+    'sc.dev': 'sobre-comida.com.br',
+    'ag.dev': 'about.gam.es'
 }
+
 
 class TestSettings(object):
     """
@@ -63,10 +64,10 @@ class TestSettings(object):
             pass
 
     def _set_test_settings(self):
-        settings.SITES_DIR          = SITES_DIR
-        settings.DEFAULT_HOST       = DEFAULT_HOST
+        settings.SITES_DIR = SITES_DIR
+        settings.DEFAULT_HOST = DEFAULT_HOST
         settings.HOSTNAME_REDIRECTS = HOSTNAME_REDIRECTS
-        settings.DEV_HOSTNAMES      = DEV_HOSTNAMES
+        settings.DEV_HOSTNAMES = DEV_HOSTNAMES
 
     def revert(self):
         """

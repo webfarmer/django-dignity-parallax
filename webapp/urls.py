@@ -10,8 +10,8 @@ urlpatterns = patterns('',
     url(r'^media/tinymce/',                  include('tinymce.urls')),
     url(r'^admin/',                          include(admin.site.urls)),
 
-    url(r'^shop/',                           include('shop.urls')),
     url(r'^',                                include('parallax.urls')),
+    url(r'^shop/',                           include('shop.urls')),
 )
 
 if settings.DEBUG:
