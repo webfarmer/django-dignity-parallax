@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^admin/',                          include(admin.site.urls)),
 
     url(r'^',                                include('parallax.urls')),
+    url(r'^',                                include('accounts.urls')),
     url(r'^shop/',                           include('shop.urls')),
 )
 

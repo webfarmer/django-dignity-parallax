@@ -1,0 +1,14 @@
+{% extends "accounts/base.html" %}
+{% load i18n static %}
+
+{% block body %}
+    <form method="post" action=".">{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+
+        <input type="submit" value="Login" />
+
+        <a href="{% url "auth_forgot_password" %}">Forgot Password?</a>
+    </form>
+{% endblock %}

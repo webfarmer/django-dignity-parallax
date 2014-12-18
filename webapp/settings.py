@@ -33,10 +33,10 @@ ROOT_URLCONF = 'urls'
 WSGI_APPLICATION = 'wsgi.application'
 
 AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
     'accounts.backend.EmailAuthBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
-
+LOGIN_REDIRECT_URL = "/shop/"
 
 # ==============================================================================
 # database settings
@@ -78,10 +78,7 @@ EMAIL_PORT = 1025
 EMAIL_USE_TLS = False
 EMAIL_SYSTEM_SENDER = 'Tip of the Tongue Agency <support@tottagency.com>'
 
-
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-)
+LOGIN_URL = "/login/"
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 LOCKED_MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media_locked')

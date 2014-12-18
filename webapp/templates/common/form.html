@@ -1,0 +1,20 @@
+{% load i18n %}
+{% csrf_token %}
+
+<fieldset>
+    {% for field in form %}
+        <div class="control-group {% if field.errors %}error{% endif %}">
+            {% if field.id_for_label != "id_tos" %}
+                <label class="control-label" for="{{ field.id_for_label }}">{{ field.label_tag }}</label>
+                <div class="controls"> {{ field }}
+                    {% if field.errors %}<span class="help-inline">{{ field.errors }}</span>{% endif %}
+                </div>
+            {% else %}
+                <label class="control-label" for="{{ field.id_for_label }}" style="line-height: 0px;">{{ field }}</label>
+                <div class="controls"> {{ field.label_tag }}
+                    {% if field.errors %}<span class="help-inline">{{ field.errors }}</span>{% endif %}
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</fieldset>
