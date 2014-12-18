@@ -1,0 +1,25 @@
+<div class="row-fluid profileblock" >
+    <div class="profile col">
+            <a href="/"><img src="/static/img/profile.jpg" class="th radius" alt=""/></a>
+    </div>
+
+    <div class="blip col">
+        <h3><a href="http://instagram.com/legopadda" target="_blank">legopadda</a></h3>
+        <p><strong>Robert Whitehead</strong> I love telling a story through a simple picture, creating scenes
+            using nature is a passion and a challenge. Lego is one of my creative outlets.</p>
+    </div>
+
+    <div class="shopping col">
+        <a href="{% url "checkout" %}" class="button btncart xlarge radius">
+            <span id="cart_count">
+                {% if cart.nb_items %}
+                {{cart.nb_items}}
+                {% else %}
+                    0
+                {% endif %}
+            </span>
+            <br/>
+            {% if cart.nb_items > 1 %}items{% else %}item{% endif %} in your cart
+        </a>
+    </div>
+</div>

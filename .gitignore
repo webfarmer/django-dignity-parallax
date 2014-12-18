@@ -1,0 +1,17 @@
+webapp/static/upload/
+webapp/static/admin
+webapp/styleguide/sass/.sass-cache/
+webapp/static/CACHE/
+webapp/media/
+software/
+logs/
+sock/
+webapp/settings_local.py
+webapp/.idea/
+.idea/*
+.idea/
+webapp/.idea/*
+*.pyc
+.DS_Store
+webapp/tmp
+webapp.db

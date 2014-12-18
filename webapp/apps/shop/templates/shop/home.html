@@ -1,0 +1,36 @@
+{% extends "shop/base.html" %}
+{% load thumbnail %}
+
+{% block post_js %}
+    <script src="/static/js/home.js"></script>
+{% endblock %}
+
+{% block content %}
+
+    <div class="product_list">
+
+    {% include "partials/messages.html" %}
+
+    {% for product in product_list %}
+        <div class="product">
+            <a href="javascript:openModal('{{ product.id }}')">
+                <div class="wrapper">
+                    <div class="box">
+                        <h3>{{ product.title|truncatewords:1 }}</h3>
+                        {% thumbnail product.image 150x150 crop quality=100 as thumb %}
+                        <img src="{{ thumb.url }}" style="width:150px" class="th radius" alt=""/>
+                        <button class="button small radius"> Add to Cart </button>
+                    </div>
+                </div>
+           </a>
+        </div>
+    {% endfor %}
+    </div>
+{% endblock %}
+
+{% block after_js %}
+    <div id="myModal" class="reveal-modal" data-reveal>
+      <a class="close-reveal-modal">&#215;</a>
+      <div id="product_data"></div>
+    </div>
+{% endblock %}

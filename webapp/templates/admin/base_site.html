@@ -1,0 +1,17 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Shundeez site admin' %}{% endblock %}
+
+{% block branding %}
+{% if not query.pop %}
+<h1 id="site-name">{% trans 'Shundeez administration' %}</h1>
+{% endif %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+
+{% block blockbots %}
+{{ block.super }}
+<script type="text/javascript" src="/static/js/admin.js"></script>
+{% endblock %}

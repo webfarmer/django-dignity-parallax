@@ -1,0 +1,19 @@
+{% load i18n %}
+{% if is_paginated %}
+    <tr class="navbar-inner" style="padding:0px;padding-left:10px">
+        <td colspan="3" class="txt-font12">
+            <strong class="height30 push-margin-right10">Pages:</strong>
+            {% for page in pages %}
+                {% if page %}
+                    {% ifequal page page_obj.number %}
+                        <a class="btn btn-inverse btn-small" href="#">{{ page }}</a>
+                    {% else %}
+                        <a class="btn btn-small" href="?page={{ page }}{{ getvars }}">{{ page }}</a>
+                    {% endifequal %}
+                {% else %}
+                    <span class="txt-font12 height35"><strong>...</strong></span>
+                {% endif %}
+            {% endfor %}
+        </td>
+    </tr>
+{% endif %}

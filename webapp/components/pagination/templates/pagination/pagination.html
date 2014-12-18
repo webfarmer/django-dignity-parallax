@@ -1,0 +1,26 @@
+{% if is_paginated %}
+    {% load i18n %}
+    <div class="text-center" style="margin-bottom: 20px;">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{{ getvars }}" class="btn btn-success btn-small prev">&lsaquo;&lsaquo; {% trans "previous" %}</a>
+        {% else %}
+            <span class="disabled prev btn btn-success btn-small">&lsaquo;&lsaquo; {% trans "previous" %}</span>
+        {% endif %}
+        {% for page in pages %}
+            {% if page %}
+                {% ifequal page page_obj.number %}
+                    <span class="current page btn btn-info btn-small">{{ page }}</span>
+                {% else %}
+                    <a href="?page={{ page }}{{ getvars }}" class="btn btn-success btn-small">{{ page }}</a>
+                {% endifequal %}
+            {% else %}
+                ...
+            {% endif %}
+        {% endfor %}
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{{ getvars }}" class="next btn btn-success btn-small">{% trans "next" %} &rsaquo;&rsaquo;</a>
+        {% else %}
+            <span class="disabled next btn btn-success btn-small">{% trans "next" %} &rsaquo;&rsaquo;</span>
+        {% endif %}
+    </div>
+{% endif %}

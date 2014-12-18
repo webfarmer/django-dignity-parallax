@@ -1,0 +1,45 @@
+{% load thumbnail %}
+
+
+{#<div id="imageSwap">#}
+{#</div>#}
+{##}
+{#<script language="javascript" type="text/javascript">#}
+{##}
+{#    $(document).ready(function () {#}
+{#      setImageOne();#}
+{#    });#}
+{##}
+{#    function setImageOne() {#}
+{#      $('#imageSwap').fadeIn(500).html('<img src="/media/upload/image/wizard.png.200x200_q100_crop.jpg" />').delay(2000).fadeOut(500, function () { setImageTwo(); });#}
+{#    }#}
+{##}
+{#    function setImageTwo() {#}
+{#      $('#imageSwap').fadeIn(500).html('<img src="/media/upload/image/family.png.200x200_q100_crop.jpg" />').delay(2000).fadeOut(500, function () { setImageOne(); });#}
+{#    }#}
+{#</script>#}
+
+<header class="carouselBanner">
+    <section class="row heading">
+        <div class="carousel fader">
+            {% for img in config_image_list %}
+                {% if forloop.counter0|divisibleby:"2" %}
+                    <div class="{% cycle "left" "right" "right" %}">
+                {% endif %}
+                    {% thumbnail img.image 200x200 crop quality=100 as thumb %}
+                    <img style="float:left;height:200px" src="{{ thumb.url }}" {% if forloop.counter0 == 0 or forloop.counter0 == 2 %}class="rad{{ forloop.counter0 }}"{% endif %} alt=""/>
+
+
+                {% if forloop.counter|divisibleby:"2" %}
+                    </div>
+                {% else %}
+                    {% if forloop.last %}
+                    </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% thumbnail config.main_image 400x400 crop quality=100 as home_thumb %}
+            <img style="height:400px" src="{{ home_thumb.url }}" alt=""/>
+        </div>
+    </section>
+</header>

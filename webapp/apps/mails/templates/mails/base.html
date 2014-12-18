@@ -1,0 +1,75 @@
+{% load i18n %}
+<style type="text/css">
+    body { margin: 0px; background-color: #eee; }
+    a { text-decoration: none;}
+    p a { color: #ac2125; text-decoration:none;}
+    a:hover { text-decoration: underline;}
+    p { padding: 5px; margin: 0; font-size: 12px; font-family: Arial, sans-serif;}
+    h1{ font-family: Arial, sans-serif; margin: 0; color: #ac2125; font-size: 25px; }
+    td { vertical-align:top;}
+    ul, ol { margin: 0; padding: 0;}
+    .contents table{
+        width: 100%;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+        border-radius: 5px;
+        font-size: 13px;
+        border-spacing: 0px;
+    }
+    .contents table td {
+        border: 1px solid #ddd;
+        height: 25px;
+        line-height: 25px;
+        padding-left: 20px;
+    }
+
+</style>
+
+<table cellspacing="0" border="0" cellpadding="0" width="100%">
+  <tbody>
+    <tr align="center">
+      <td valign="top">
+        <table cellspacing="0" cellpadding="0" border="0" width="650px" style="background: #ffffff">
+        <tr>
+            {% block header %}
+            <td align="center" style="background-image: url('/static/img/top-banner.jpg');background-repeat: repeat-x;height:55px">
+                <a href="{{ site_url }}">
+                    <img width="387" height="55" src="{{ site_url }}/static/img/top-logo.jpg" />
+                </a>
+            </td>
+            {% endblock %}
+        </tr>
+        <tr>
+            {% block body %}
+            <td style="text-align:left; font-size: 14px; font-family: arial; padding: 20px 10px 20px; background-color: white; color: #777;">
+                <div style="min-height: 400px;display: block" class="contents">
+                    {% block content %}
+                        <h1 style="color:#222">Header</h1>
+                        <p>
+                            You Should Not See This
+                        </p>
+                    {% endblock %}
+                </div>
+            </td>
+            {% endblock %}
+        </tr>
+        <tr>
+            {% block footer %}
+            <td style="text-align:center; font-family: tahoma; padding: 20px 0px 30px; background-color: black; color: #777; font-size: 9px">
+                {% now "Y" %} &copy; All Rights Reserved <a style="color: #808080; text-decoration: underline" href="{{ site_url }}"><strong>{{ site_name }}</strong></a>
+
+                <br/>
+                <br/>
+                <br/>
+                <div style="padding: 0px 20px; text-align: justify">
+                {% trans "This email may contain confidential material. If you are not the intended recipient(s), his/her assistant, or authorized recipient, any form of disclosure, reproduction, distribution or any use of this communication or the information in it, is strictly prohibited and may be unlawful. In this case, please notify the sender immediately and destroy the email." %}
+                </div>
+            </td>
+            {% endblock %}
+        </tr>
+        </table>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,40 @@
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=9">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Tip of the Tongue Agency</title>
+
+    <link href="/static/foundation/css/foundation.css" rel="stylesheet" />
+    <link href="/static/css/base_shop.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="/static/js/jquery.min.js"></script>
+    <script src="/static/foundation/js/foundation.min.js"></script>
+    <script src="/static/foundation/js/vendor/modernizr.js"></script>
+    <script src="/static/js/base.js"></script>
+
+    {% block post_css %}{% endblock %}
+    {% block post_js %}{% endblock %}
+
+
+</head>
+
+<body>
+    <div class="mainContainer">
+        {% include "partials/header.html" %}
+        <section class="mainContent">
+            <div class="row bodycontent">
+                {% include "partials/blip.html" %}
+
+                {% block content %}{% endblock %}
+            </div>
+        </section>
+        {% include "partials/footer.html" %}
+    </div>
+    {% block after_js %}{% endblock %}
+</body>
+</html>
