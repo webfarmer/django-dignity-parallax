@@ -22,7 +22,7 @@
 </head>
 
 <body>
-    <a href="http://www.tottagency.com/"><div class="mainBanner">
+    <a href="http://www.tottagency.com/"><div class="mainBanner fixed">
         <img src="/static/img/top-logo.jpg" alt=""/>
     </div></a>
     <div class="mainContainer">
@@ -30,6 +30,8 @@
         <section class="mainContent">
             <div class="row bodycontent">
                 {% include "partials/blip.html" %}
+
+                <a href="{% url "auth_logout" %}">logout</a>
 
                 {% block content %}{% endblock %}
             </div>

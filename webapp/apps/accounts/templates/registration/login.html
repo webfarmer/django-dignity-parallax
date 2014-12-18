@@ -2,6 +2,10 @@
 {% load i18n static %}
 
 {% block body %}
+    <h1>{% trans "Login" %}</h1>
+
+    <p>{% trans "Please enter your login details below" %}:</p>
+
     <form method="post" action=".">{% csrf_token %}
         <table>
             {{ form.as_table }}
