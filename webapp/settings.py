@@ -228,7 +228,7 @@ SITE_ID = 1
 
 WPADMIN = {
     'admin': {
-        'title': 'TOTTAgency Admin',
+        'title': 'TOTT Agency Admin',
         'menu': {
             'top': 'wpadmin.menu.menus.BasicTopMenu',
             'left': 'wpadmin.menu.menus.BasicLeftMenu',

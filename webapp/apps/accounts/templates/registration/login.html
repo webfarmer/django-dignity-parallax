@@ -4,15 +4,19 @@
 {% block body %}
     <h1>{% trans "Login" %}</h1>
 
-    <p>{% trans "Please enter your login details below" %}:</p>
+    {% if form.errors %}
+        <p style="color:#cf2a0e; font-weight: bold">There was an error with the fields below:</p>
+    {% else %}
+        <p>{% trans "Please enter your login details below" %}:</p>
+    {% endif %}
 
     <form method="post" action=".">{% csrf_token %}
         <table>
             {{ form.as_table }}
         </table>
 
-        <input type="submit" value="Login" />
+        <input class="button" type="submit" value="Login" />
 
-        <a href="{% url "auth_forgot_password" %}">Forgot Password?</a>
+        <a class="button" href="{% url "auth_forgot_password" %}">Forgot Password?</a>
     </form>
 {% endblock %}

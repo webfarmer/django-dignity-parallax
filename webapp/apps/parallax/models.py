@@ -3,7 +3,45 @@ from django.db import models
 
 
 class ParallaxConfig(models.Model):
-    main_image = models.FileField(verbose_name="Main Image", upload_to='upload/parallax/', blank=True, null=True)
+    PARALLAX_CHOICES =(
+        ("01",'index01.html'),
+        ("02",'index02.html'),
+        ("03",'index03.html'),
+        ("04",'index04.html'),
+        ("05",'index05.html'),
+        ("06",'index06.html'),
+        ("07",'index07.html'),
+        ("08",'index08.html'),
+        ("09",'index09.html'),
+        ("10",'index10.html'),
+    )
+    parallax_id = models.CharField(max_length=255, choices=PARALLAX_CHOICES)
+
+    title = models.CharField(max_length=255, blank=True, null=True)
+    site_name = models.CharField(max_length=255, blank=True, null=True)
+
+    logo = models.FileField(verbose_name="Main Image", upload_to='upload/parallax/', blank=True, null=True)
+
+
+    contact_text = models.TextField(blank=True, null=True)
+    contact_company_name = models.CharField(max_length=255, blank=True, null=True)
+    contact_company_email = models.CharField(max_length=255, blank=True, null=True)
+
+    social_twitter = models.CharField(max_length=255, blank=True, null=True)
+    social_skype = models.CharField(max_length=255, blank=True, null=True)
+    social_facebook = models.CharField(max_length=255, blank=True, null=True)
+
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    class Meta:
+        verbose_name = "Configurations"
+        verbose_name_plural = "Configurations"
+
+class ParallaxConfigImage(models.Model):
+
+    title = models.CharField(max_length=255, blank=False, null=True)
 
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)

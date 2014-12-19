@@ -1,1 +1,47 @@
-{% include "parallax/bases/index03.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+
+    <title>Tip of The Tongue Agency</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Tip of The Tongue Agency">
+    <meta name="author" content="">
+
+    <!-- Standard Favicon-->
+    <link rel="shortcut icon" href="/favicon.ico">
+
+    {% include "parallax/assets/css.html" %}
+
+    <!-- Home Page Styles -->
+    <link href="/static/dignity/stylesheets/home{{ config.parallax_id }}.css" rel="stylesheet">
+
+</head>
+
+<body>
+{% include header_nav %}
+<!-- Master Wrap : starts -->
+<section id="mastwrap" class="sliding">
+    {% include header %}
+
+    {% include "parallax/partials/about.html" %}
+
+    {% include "parallax/partials/services.html" %}
+
+    {% include "parallax/partials/team.html" %}
+
+    {% include "parallax/partials/testimonials.html" %}
+
+    {% include "parallax/partials/portfolio.html" %}
+
+    {% include "parallax/partials/contact.html" %}
+
+    {% include "parallax/partials/footer.html" %}
+
+    {% include "parallax/assets/js.html" %}
+
+</section>
+<!-- Master Wrap : ends -->
+
+</body>

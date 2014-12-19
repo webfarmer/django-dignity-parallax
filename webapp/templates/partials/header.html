@@ -28,6 +28,7 @@
                 {% endif %}
                     {% thumbnail img.image 200x200 crop quality=100 as thumb %}
                     <img style="float:left;height:200px" src="{{ thumb.url }}" {% if forloop.counter0 == 0 or forloop.counter0 == 2 %}class="rad{{ forloop.counter0 }}"{% endif %} alt=""/>
+                    <img style="float:left;height:200px" src="/static/img/blocks/01.jpg" alt=""/>
 
 
                 {% if forloop.counter|divisibleby:"2" %}
@@ -40,6 +41,7 @@
             {% endfor %}
             {% thumbnail config.main_image 400x400 crop quality=100 as home_thumb %}
             <img style="height:400px" src="{{ home_thumb.url }}" alt=""/>
+{#            <img style="height:400px" src="/static/img/blocks/01.jpg" alt=""/>#}
         </div>
     </section>
 </header>

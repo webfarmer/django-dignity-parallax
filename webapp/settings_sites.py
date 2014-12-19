@@ -1,6 +1,6 @@
 
 ENV_HOSTNAMES = {
-    "127.0.0.1":                   "bksa.tottagency.com",
+    "127.0.0.1":                   "www.tottagency.com",
     "tottagency.co.za":            "www.tottagency.com",
     "bksa.tottagency.com":         "bksa.tottagency.com",
     "demo.tottagency.com":         "demo.tottagency.com",

@@ -1,0 +1,73 @@
+body{
+  background-color :#efefef;
+  background-image: url('/static/img/car-bg.png');
+  background-repeat: repeat;
+}
+
+.authBlock{
+  width: 600px;
+  padding: 0px 0px 10px ;
+  background-color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10%;
+  text-align: center;
+  border-radius: 10px;
+  h1{
+    border-radius: 10px 10px 0px 0px;
+    font-weight: bold;
+    font-size: 22px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0px;
+    text-transform: uppercase;
+    background-color: #efefef;
+    margin-bottom: 20px;
+  }
+  .button{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    background-color: #a40055;
+  }
+  form{
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+  table{
+    th{
+      font-weight: bold;
+    }
+    .errorlist{
+      margin: 0px;
+      padding: 3px 10px;
+      border-radius: 5px 5px 0px 0px;
+      list-style: none;
+      background-color: #CC3434;
+      color: white;
+      width: 100%;
+      font-size: 10px;
+    }
+    td, tr, th{
+      input{
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.mainBanner{
+  background-image: url("/static/img/top-banner.jpg");
+  background-repeat: repeat-x;
+  text-align: center;
+  height: 81px;
+  background-color: white;
+  .logo{
+    width: 100%;
+    height: 80px;
+    background-image: url('/static/img/top-logo.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    border-bottom: 1px solid #ffc522;
+  }
+}

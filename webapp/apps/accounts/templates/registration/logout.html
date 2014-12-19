@@ -6,6 +6,6 @@
 
     <p>{% trans "You have successfully logged out" %}.</p>
 
-    <a href="{% url "auth_login" %}">{% trans "Login" %}?</a>
-    <a href="{% url "auth_password_reset" %}">{% trans "Forgot your password" %}?</a>
+    <a class="button" href="{% url "auth_login" %}">{% trans "Login" %}?</a>
+    <a class="button" href="{% url "auth_password_reset" %}">{% trans "Forgot your password" %}?</a>
 {% endblock %}
