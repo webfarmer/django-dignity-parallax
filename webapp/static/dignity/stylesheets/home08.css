@@ -13,11 +13,11 @@
 }
 .intro-overlay{
 	height: 100%;
-	background: url('../images/mask/raster-dark.png') repeat;
+	background: url('/static/dignity/images/mask/raster-dark.png') repeat;
 }
 #intro{
 	height: 100%;
-	background: #222 url('../images/bg/parallax-image.jpg') repeat-y;
+	background: #222 url('/static/dignity/images/bg/parallax-image-new.jpg') repeat-y;
 	/*activate this on mobiles*/
 	/*background: #222 url('../images/bg/parallax-image.jpg') center center repeat-y;*/
 	background-size: cover;

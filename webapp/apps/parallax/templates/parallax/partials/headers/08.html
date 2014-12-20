@@ -1,6 +1,6 @@
 <!-- masthead : starts -->
 <header id="masthead" class="clearfix">
-	<h1 class="logo">Dignity</h1>
+	<h1 class="logo">{{ config.site_name }}</h1>
 </header>
 <!-- masthead : ends -->
 
@@ -9,11 +9,18 @@
 <div id="intro" class="top-banner-caption-v1" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" data-stellar-horizontal-offset="0">
 	<section class="intro-overlay">
 		<div class="vertical-center">
-			<div class="logo-emblem">
-				<img alt="" title="" src="/static/dignity/images/badge-green.png"/>
-			</div>
-			<h3><span>Welcome to Dignity</span></h3>
-			<h1 class="text-rotator-fade"><span class="rotate">Parallax, BGImage, Animated</span></h1>
+            {% if config.logo %}
+                <div class="logo-emblem">
+                    <img alt="" title="" src="{{ config.logo.url }}"/>
+                </div>
+            {% else %}
+                <div class="logo-emblem">
+                    <img alt="" title="" src="/static/dignity/images/badge-{{ config.colour }}.png"/>
+                </div>
+            {% endif %}
+            <h3><span>{{ config.title }}</span></h3>
+		    <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+            <h4 style="color: black"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
 		</div>
 	</section>
 </div>

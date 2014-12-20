@@ -1,14 +1,14 @@
 <!-- masthead : starts -->
 <header id="masthead" class="clearfix">
-	<h1 class="logo standard-spacing">Tip of the Tongue</h1>
+	<h1 class="logo standard-spacing">{{ config.site_name }}</h1>
 	<ul class="standard-nav visible-lg">
 		<li><a id="intro-linker" class="scroll" href="#intro">Home</a></li>
-		<li><a id="about-linker" class="scroll" href="#about">About</a></li>
-		<li><a id="services-linker" class="scroll" href="#services">Services</a></li>
-		<li><a id="team-linker" class="scroll" href="#team">Team</a></li>
-		<li><a id="portfolio-linker" class="scroll" href="#portfolio">Portfolio</a></li>
-		<li><a id="contact-linker" class="scroll" href="#contact">Contact</a></li>
-		<li><a href="http://demo.tottagency.com">Our Store</a></li>
+		{% if config.is_about %}<li><a id="about-linker" class="scroll" href="#about">About</a></li>{% endif %}
+		{% if config.is_about %}<li><a id="services-linker" class="scroll" href="#services">Services</a></li>{% endif %}
+		{% if config.is_about %}<li><a id="team-linker" class="scroll" href="#team">Team</a></li >{% endif %}
+		{% if config.is_about %}<li><a id="portfolio-linker" class="scroll" href="#portfolio">Portfolio</a></li>{% endif %}
+		{% if config.is_about %}<li><a id="contact-linker" class="scroll" href="#contact">Contact</a></li>{% endif %}
+		{% if config.alt_link %}<li><a href="{{ config.alt_link }}">{{ config.alt_link_title }}</a></li>{% endif %}
 	</ul>
 </header>
 <!-- masthead : ends -->
@@ -17,12 +17,13 @@
 <div id="intro" class="top-banner-caption-v3">
 
 	<div class="vertical-center top-caps3">
-		<h3><span>Creative Portfolio / Agency / Design Studio / Web Designer</span></h3>
-		<h1 class="text-rotator-fade"><span class="rotate">we are dignity, we create ux/ui, we build brands</span></h1>
+        <h3><span>{{ config.title }}</span></h3>
+        <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+        <h4 style="color: white"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
 		<!-- inner-section : starts -->
 		<section class="text-center">
-	        		<nav class="cl-effect-10 btn-dignity-animated">
-				<a data-hover="View our portfolio" href="#"><span>Getting Impressed?</span></a>
+            <nav class="cl-effect-10 btn-dignity-animated">
+				<a data-hover="Find Out More About {{ config.site_name }}" href="#about"><span>Find Out More About {{ config.site_name }}</span></a>
 			</nav>
 		</section>
 		<!-- inner-section : ends -->

@@ -1,6 +1,6 @@
 <!-- masthead : starts -->
 <header id="masthead" class="clearfix trans-header">
-	<h1 class="logo">Dignity</h1>
+    <h1 class="logo">{{ config.site_name }}</h1>
 </header>
 <!-- masthead : ends -->
 
@@ -8,9 +8,10 @@
 <div id="intro" class="top-banner-caption-v5">
 
 	<div class="vertical-center top-caps5">
-		<h3><span>Dignity Interactive Agency</span></h3>
-		<h1 class="text-rotator-fade"><span class="rotate">we are dignity, we create ux/ui, we build brands</span></h1>
-		<a class="btn btn-rounded btn-rounded-color scroll" href="/static/dignity/#about">Go</a>
+		<h3><span>{{ config.title }}</span></h3>
+        <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+        <h4 style="color: black"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
+		<a class="btn btn-rounded btn-rounded-color scroll" href="#about">Go</a>
 	</div>
 	<!-- top-caps : ends -->
 </div>

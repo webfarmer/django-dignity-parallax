@@ -14,7 +14,7 @@
 }
 .intro-parallax-bg{
 	height: 100%;
-	background: #222 url('../images/bg/parallax-white.jpg') repeat;
+	background: #222 url('/static/dignity/images/bg/parallax-white.jpg') repeat;
 	/*activate this on mobiles*/
 	/*background: #222 url('../images/bg/parallax-image.jpg') center center repeat-y;*/
 	/*background-size: cover;
@@ -22,7 +22,7 @@
 }
 #intro{
 	height: 100%;
-	background: url('../images/mask/raster.png') repeat;
+	background: url('/static/dignity/images/mask/raster.png') repeat;
 }
 .top-banner-caption-v9{
 	text-align: left;

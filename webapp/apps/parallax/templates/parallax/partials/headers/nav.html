@@ -1,0 +1,17 @@
+<!-- Sliding Navigation : starts -->
+<nav class="menu {% if config.parallax_id == "05" %}visible-xs visible-sm visible-md{% endif %}" id="sm">
+    <div class="sm-wrap">
+        <h1 class="sm-logo">{{ config.site_name_small }}</h1>
+        <i class="icon-remove menu-close"></i>
+        <a class="scroll" href="#intro">Home</a>
+        {% if config.is_about %}<a class="scroll" href="#about">About</a>{% endif %}
+        {% if config.is_service %}<a class="scroll" href="#services">Services</a>{% endif %}
+        {% if config.is_team %}<a class="scroll" href="#team">Team</a>{% endif %}
+        {% if config.is_portfolio %}<a class="scroll" href="#portfolio">Portfolio</a>{% endif %}
+        {% if config.is_contact %}<a class="scroll" href="#contact">Contact</a>{% endif %}
+        {% if config.alt_link %}<a href="{{ config.alt_link }}">{{ config.alt_link_title }}</a>{% endif %}
+    </div>
+	<!-- Navigation Trigger Button -->
+	<div id="sm-trigger"></div>
+</nav>
+<!-- Sliding Navigation : ends -->

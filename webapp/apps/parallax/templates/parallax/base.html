@@ -20,22 +20,39 @@
 </head>
 
 <body>
-{% include header_nav %}
+
+{% if config.parallax_id == "10" %}
+    <a id="bgndVideo" class="player" data-property="{videoURL:'http://www.youtube.com/watch?v=9s2oYUy_cVY',containment:'body',autoPlay:true, mute:true, startAt:1, opacity:1}">bg</a>
+{% endif %}
+
+{% include "parallax/partials/headers/nav.html" %}
 <!-- Master Wrap : starts -->
 <section id="mastwrap" class="sliding">
     {% include header %}
 
-    {% include "parallax/partials/about.html" %}
+    {% if config.is_about %}
+        {% include "parallax/partials/about.html" %}
+    {% endif %} 
 
-    {% include "parallax/partials/services.html" %}
+    {% if config.is_service %}
+        {% include "parallax/partials/services.html" %}
+    {% endif %}
 
-    {% include "parallax/partials/team.html" %}
+    {% if config.is_team %}
+        {% include "parallax/partials/team.html" %}
+    {% endif %}
 
-    {% include "parallax/partials/testimonials.html" %}
+    {% if config.is_testimonials %}
+        {% include "parallax/partials/testimonials.html" %}
+    {% endif %}
 
-    {% include "parallax/partials/portfolio.html" %}
+    {% if config.is_portfolio %}
+        {% include "parallax/partials/portfolio.html" %}
+    {% endif %}
 
-    {% include "parallax/partials/contact.html" %}
+    {% if config.is_contact %}
+        {% include "parallax/partials/contact.html" %}
+    {% endif %}
 
     {% include "parallax/partials/footer.html" %}
 

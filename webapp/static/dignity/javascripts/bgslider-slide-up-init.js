@@ -38,8 +38,8 @@ $(function ($) {
                 // else:
 
                  images:[
-                 "/static/dignity/images/bg/01.jpg",
-                 "/static/dignity/images/bg/02.jpg",
+                 "/static/dignity/images/bg/03.jpg",
+                 "/static/dignity/images/bg/04.jpg"
                  ],
 
                 onStart:function(){},
