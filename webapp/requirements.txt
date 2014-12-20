@@ -11,6 +11,7 @@ django-countries
 django-money
 django-uuidfield
 
+# for PIL
 #pip install --no-index -f http://dist.plone.org/thirdparty/ -U PIL
 #-e git://github.com/aljosa/django-tinymce.git@9f0f3ffe5f6fa329b6325a9d26e85ccc0e5476d7#egg=django_tinymce-0.5-py2.6-dev
 
@@ -21,7 +22,6 @@ django-uuidfield
 # python manage.py scrape
 # apt-get install libgeoip-dev git-flow
 
-# for PIL
 # sudo apt-get install libjpeg62-dev
 # sudo apt-get install libfreetype6 libfreetype6-dev zlib1g
 

@@ -17,9 +17,9 @@
 <div id="intro" class="top-banner-caption-v3">
 
 	<div class="vertical-center top-caps3">
-        <h3><span>{{ config.title }}</span></h3>
-        <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
-        <h4 style="color: white"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
+        <h3><span style="color: {{ config.text_colour }}">{{ config.title }}</span></h3>
+        <h1 {% if config.subtitle_style %}style="color: {{ config.text_colour }}; {{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+        <h4 style="color: {{ config.text_colour }}"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
 		<!-- inner-section : starts -->
 		<section class="text-center">
             <nav class="cl-effect-10 btn-dignity-animated">

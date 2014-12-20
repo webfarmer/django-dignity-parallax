@@ -2,14 +2,15 @@ django-dignity-parallax
 =======================
 
 Dignity (http://themeforest.net/item/dignity-simple-portfolio-responsive-retina-html5/6021446).
-Dignity is a simple & easily reusable web template with a clean design and neat arrangement of contents. 
+Dignity is a simple & easily reusable web template with a clean design and neat arrangement of contents.
 A perfect onepage portfolio for all creatives.
 
-I took The Dignity Parallax template and placed it into this Django skeleton, but altered it to make it as dynamic as possble.
+I took The Dignity Parallax template and placed it into this Django skeleton, but altered it to make it as dynamic as possible.
 
-I used WPAdmin (Wordpress Admin) as the admin backend - along with TinyMCE at specific points. https://github.com/barszczmm/django-wpadmin
+I used WPAdmin (Wordpress Admin) as the admin backend - along with TinyMCE at specific points.
+https://github.com/barszczmm/django-wpadmin
 
-This project is great for bootstrapping your startup- it's very awesome for those of you who want the Dignity template 
+This project is great for bootstrapping your startup- it's very awesome for those of you who want the Dignity template
 as dynamic as possible (Django is also a massive benefit).
 
 Features:
@@ -28,6 +29,9 @@ Installation:
 5. $python manage.py syncdb --migrate
 6. $python manage.py runserver
 
-Please note, this project does use easy-thumbnails==1.3 to crop images on the Dignity template - in order to have the jpeg's supported and cropping correctly, you will need PIL (or pillow - whatever works for you). PIL always gives me shit - so Inside the requirements.txt file, I've placed as many instructions in there to help install PIL and get it up and running correctly.
+Please note, this project does use easy-thumbnails==1.3 to crop images on the Dignity template - in order to have the jpeg's
+supported and cropping correctly, you will need PIL (or pillow - whatever works for you). PIL always gives me shit
+- so Inside the requirements.txt file, I've placed as many instructions in there to help install PIL and get it up and
+running correctly.
 
 If you have any issues  email me on paulvonhoesslin@gmail.com

@@ -76,7 +76,7 @@ jQuery.fn.CSSAnimate=function(a,f,k,m,e){return this.each(function(){var b=jQuer
 		version:"1.8.0",
 		defaults:{
 			containment:"body",
-			images:[],
+			images:background_images,
 			shuffle:false,
 			controls:null,
 			effect:"fade",

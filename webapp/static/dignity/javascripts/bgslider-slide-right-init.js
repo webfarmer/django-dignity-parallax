@@ -37,10 +37,7 @@ $(function ($) {
 
                 // else:
 
-                 images:[
-                 "/static/dignity/images/bg/03.jpg",
-                 "/static/dignity/images/bg/04.jpg"
-                 ],
+                 images:background_images,
 
                 onStart:function(){},
                 onPause:function(){},

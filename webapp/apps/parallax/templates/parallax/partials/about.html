@@ -34,7 +34,7 @@
 
 	</section>
 	<!-- inner-section : ends -->
-    {% with config.parallaxconfigaboutimage_set.all as about_image_list %}
+    {% with config.get_parallaxconfigaboutimage as about_image_list %}
     {% if about_image_list %}
     	<!-- inner-section : starts -->
 	<section id="thumb-carousel-wrap" class="inner-section thumb-carousel-wrap">

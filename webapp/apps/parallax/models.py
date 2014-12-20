@@ -79,6 +79,15 @@ class ParallaxConfig(models.Model):
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)
 
+    def get_parallaxconfigservice(self):
+        return self.parallaxconfigservice_set.filter(display=True)
+
+    def get_parallaxconfigimage(self):
+        return self.parallaxconfigimage_set.filter(display=True)
+
+    def get_parallaxconfigaboutimage(self):
+        return self.parallaxconfigaboutimage_set.filter(display=True)
+
     class Meta:
         verbose_name = "Configurations"
         verbose_name_plural = "Configurations"
@@ -92,6 +101,9 @@ class ParallaxConfigImage(models.Model):
 
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.title
 
     class Meta:
         verbose_name = "Bg Image"
@@ -108,7 +120,11 @@ class ParallaxConfigAboutImage(models.Model):
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)
 
+    def __unicode__(self):
+        return self.title
+
     class Meta:
+        ordering = ["order"]
         verbose_name = "About Images"
         verbose_name_plural = "About Images"
 
@@ -126,6 +142,10 @@ class ParallaxConfigService(models.Model):
 
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.title
+
 
     class Meta:
         ordering = ["order"]
@@ -170,7 +190,7 @@ class Testimonial(models.Model):
     modified_at = models.DateTimeField(auto_now_add = True)
 
     def __unicode__(self):
-        return self.title
+        return self.quote
 
     class Meta:
         ordering = ["order"]

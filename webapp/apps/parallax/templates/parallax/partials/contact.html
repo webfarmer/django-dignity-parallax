@@ -9,9 +9,9 @@
 
 		<div class="row">
 			<article class="col-md-12 text-center">
-				<h1 class="main-heading main-heading">Contact Us</h1>
+				<h1 class="main-heading main-heading">{{ config.contact_title|safe }}</h1>
 				<div class="liner"><span></span></div>
-				<p class="promo-text light-text">We are a full service design agency from the heart of London. We create perfect brands, vibrant identities, outstanding websites and creative concepts.</p>
+				<p class="promo-text light-text">{{ config.contact_text|safe }}</p>
 			</article>
 		</div>
 
@@ -34,7 +34,7 @@
 			</article>
 		</div>
 
-		 <form name="myform" id="contactForm" action="http://designova.net/dignity/sendcontact.php" enctype="multipart/form-data" method="post">
+		 <form name="myform" id="contactForm" action="." method="post">{% csrf_token %}
             <div class="row add-top-small animated" data-fx="pulse">
               <article class="col-md-4">
                     <input type="text" placeholder="Name" id="name" name="name" size="100">

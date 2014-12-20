@@ -8,9 +8,9 @@
 <div id="intro" class="top-banner-caption-v6">
 
 	<div class="vertical-center top-caps6">
-        <h3><span>{{ config.title }}</span></h3>
-        <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
-        <h4 style="color: white"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
+        <h3 style="color:{{ config.text_colour }}"><span>{{ config.title }}</span></h3>
+        <h1 {% if config.subtitle_style %}style="color:{{ config.text_colour }}; {{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+        <h4 style="color: {{ config.text_colour }}"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
 		<a class="btn btn-rounded btn-rounded-color2 scroll" href="#about">Go</a>
 	</div>
 	<!-- top-caps : ends -->

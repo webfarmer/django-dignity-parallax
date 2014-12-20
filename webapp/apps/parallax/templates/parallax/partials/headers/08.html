@@ -18,9 +18,9 @@
                     <img alt="" title="" src="/static/dignity/images/badge-{{ config.colour }}.png"/>
                 </div>
             {% endif %}
-            <h3><span>{{ config.title }}</span></h3>
-		    <h1 {% if config.subtitle_style %}style="{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
-            <h4 style="color: black"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
+            <h3><span style="color: {{ config.text_colour }}">{{ config.title }}</span></h3>
+		    <h1 {% if config.subtitle_style %}style="color:{{ config.text_colour }};{{ config.subtitle_style }}"{% endif %}>{{ config.site_name }}</h1>
+            <h4 style="color: {{ config.text_colour }}"><strong>{{ config.subtitle }}</strong><br/>&nbsp;</h4>
 		</div>
 	</section>
 </div>

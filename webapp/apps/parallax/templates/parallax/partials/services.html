@@ -1,3 +1,6 @@
+{% load thumbnail %}
+{% with config.get_parallaxconfigservice as services_list %}
+
 <!-- page-section : starts -->
 <section id="services" class="services page-section " data-stellar-background-ratio="1.7">
 
@@ -8,10 +11,10 @@
 	<section class="container">
 		<div class="row">
 			<article class="col-md-12 text-center animated" data-fx="flipInX">
-				<h1 class="main-heading">Our Services</h1>
+				<h1 class="main-heading">{{ config.services_title }}</h1>
 				<div class="liner"><span></span></div>
 				<p class="promo-text white-text">
-                    Tip of the Tongue prides itself in understanding the expectations and needs of their clients based on 10 years’ experience manufacturing and distributing promotional products.
+                    {{ config.services_text|safe }}
 				</p>
 			</article>
 		</div>
@@ -21,24 +24,25 @@
 			</article>
 		</div>
 
+        {% if services_list %}
 		<div class="row services-icon-wrap  services-icon-wrap-{{ config.colour }}">
-			<article id="service-01" class="service-icon current col-md-3 text-center animated" data-fx="slideInLeft">
-				<a class="customLink" data-sudo-rel="1"><img alt="" title="" src="/static/dignity/images/services/{{ config.colour }}/01.png"/></a>
-				<h5>Branding &amp; Identity</h5>
-			</article>
-			<article id="service-02" class="service-icon col-md-3 text-center animated" data-fx="slideInLeft">
-				<a class="customLink" data-sudo-rel="2"><img alt="" title="" src="/static/dignity/images/services/{{ config.colour }}/02.png"/></a>
-				<h5>Bespoke Clothing</h5>
-			</article>
-			<article id="service-03" class="service-icon col-md-3 text-center animated" data-fx="slideInRight">
-				<a class="customLink" data-sudo-rel="3"><img alt="" title="" src="/static/dignity/images/services/{{ config.colour }}/03.png"/></a>
-				<h5>Promotional Products</h5>
-			</article>
-			<article id="service-04" class="service-icon col-md-3 text-center animated" data-fx="slideInRight">
-				<a class="customLink" data-sudo-rel="4"><img alt="" title="" src="/static/dignity/images/services/{{ config.colour }}/04.png"/></a>
-				<h5>Internal Shopping Portal</h5>
-			</article>
+            {% for service in services_list %}
+                {% if service.counter1 < 5 %}
+                    <article id="service-{{ forloop.counter }}" class="service-icon {% if forloop.first %}current{% endif %} col-md-3 text-center animated" data-fx="slideIn{% cycle "Left" "Left" "Right" "Right" %}">
+                        <a class="customLink" data-sudo-rel="{{ forloop.counter }}">
+                            {% if service.emblem %}
+                                {% thumbnail service.emblem 180x180 crop quality=100 as thumb %}
+                                <img alt="" title="" src="{{ thumb.url }}"/>
+                            {% else %}
+                                <img alt="" title="" src="/static/dignity/images/services/{{ config.colour }}/0{{ forloop.counter }}.png"/>
+                            {% endif %}
+                        </a>
+                        <h5>{{ service.title }}</h5>
+                    </article>
+                {% endif %}
+            {% endfor %}
 		</div>
+        {% endif %}
 	</section>
 	<!-- container : ends -->
 
@@ -46,54 +50,27 @@
 	<!-- inner-section : ends -->
 
 	<!-- inner-section : starts -->
+    {% if services_list %}
+
 	<section class="inner-section services-expansion">
 
 	<!-- container : starts -->
 	<section class="container">
 		<ul id="service-slider" >
-			<li  class="service-details default" data-service-active-hover="service-01">
-				<article class="text-center">
-					<h3 class="sub-heading">Digital Experience</h3>
-					<h5 class="small-heading"><span>Brochures / Flyers </span></h5>
-					<p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan eget sed tortor. Mauris a velit vitae mauris ultricies vehicula vitae dapibus odio. Praesent ipsum ligula, luctus ac libero sagittis, porttitor consectetur eros. Vestibulum velit ipsum, egestas nec aliquam a, molestie mattis leo.</p>
-					<nav class="cl-effect-10 btn-dignity-animated">
-					<a href="#" data-hover="Request quote"><span>Have a project?</span></a>
-					</nav>
-				</article>
-			</li>
-
-			<li  class="service-details default" data-service-active-hover="service-02">
-				<article class="text-center">
-					<h3 class="sub-heading">Branding &amp; Identity</h3>
-					<h5 class="small-heading"><span>Logo / Business Cards</span></h5>
-					<p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan eget sed tortor. Mauris a velit vitae mauris ultricies vehicula vitae dapibus odio. Praesent ipsum ligula, luctus ac libero sagittis, porttitor consectetur eros. Vestibulum velit ipsum, egestas nec aliquam a, molestie mattis leo.</p>
-					<nav class="cl-effect-10 btn-dignity-animated">
-					<a href="#" data-hover="Request quote"><span>Have a project?</span></a>
-					</nav>
-				</article>
-			</li>
-
-			<li  class="service-details default" data-service-active-hover="service-03">
-				<article class="text-center">
-					<h3 class="sub-heading">Web Publication</h3>
-					<h5 class="small-heading"><span>Websites / CMS / Apps</span></h5>
-					<p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan eget sed tortor. Mauris a velit vitae mauris ultricies vehicula vitae dapibus odio. Praesent ipsum ligula, luctus ac libero sagittis, porttitor consectetur eros. Vestibulum velit ipsum, egestas nec aliquam a, molestie mattis leo.</p>
-					<nav class="cl-effect-10 btn-dignity-animated">
-					<a href="#" data-hover="Request quote"><span>Have a project?</span></a>
-					</nav>
-				</article>
-			</li>
-
-			<li  class="service-details default" data-service-active-hover="service-04">
-				<article class="text-center">
-					<h3 class="sub-heading">Motion Graphics</h3>
-					<h5 class="small-heading"><span>Video Conference / Webinar</span></h5>
-					<p class="white-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan eget sed tortor. Mauris a velit vitae mauris ultricies vehicula vitae dapibus odio. Praesent ipsum ligula, luctus ac libero sagittis, porttitor consectetur eros. Vestibulum velit ipsum, egestas nec aliquam a, molestie mattis leo.</p>
-					<nav class="cl-effect-10 btn-dignity-animated">
-					<a href="#" data-hover="Request quote"><span>Have a project?</span></a>
-					</nav>
-				</article>
-			</li>
+            {% for service in services_list %}
+                {% if service.counter1 < 5 %}
+                    <li  class="service-details {% if forloop.first %}default{% endif %}" data-service-active-hover="service-{{ forloop.counter }}">
+                        <article class="text-center">
+                            <h3 class="sub-heading">{{ service.title }}</h3>
+                            <h5 class="small-heading"><span>{{ service.subtitle }}</span></h5>
+                            <p class="white-text">{{ service.copy|safe }}</p>
+                            <nav class="cl-effect-10 btn-dignity-animated">
+                                <a href="#contact" data-hover="Request quote"><span>Have a project?</span></a>
+                            </nav>
+                        </article>
+                    </li>
+                {% endif %}
+            {% endfor %}
 		</ul>
 
 	</section>
@@ -101,6 +78,8 @@
 
 	</section>
 	<!-- inner-section : ends -->
+    {% endif %}
+{% endwith %}
 
 </section>
 <!-- page-section : ends -->
