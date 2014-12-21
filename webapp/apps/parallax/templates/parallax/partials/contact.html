@@ -4,11 +4,17 @@
 	<!-- inner-section : starts -->
 	<section class="inner-section">
 
+    {% include "common/messages.html" %}
+
 	<!-- container : starts -->
+
 	<section class="container">
 
+
 		<div class="row">
+
 			<article class="col-md-12 text-center">
+                <p class="promo-text light-text"><span><a style="color:white" href="/">Back Home</a></span></p>
 				<h1 class="main-heading main-heading">{{ config.contact_title|safe }}</h1>
 				<div class="liner"><span></span></div>
 				<p class="promo-text light-text">{{ config.contact_text|safe }}</p>
@@ -34,7 +40,7 @@
 			</article>
 		</div>
 
-		 <form name="myform" id="contactForm" action="." method="post">{% csrf_token %}
+		 <form name="myform" id="contactForm" action="{% url "contact" %}" method="post">{% csrf_token %}
             <div class="row add-top-small animated" data-fx="pulse">
               <article class="col-md-4">
                     <input type="text" placeholder="Name" id="name" name="name" size="100">

@@ -10,9 +10,9 @@
 
             <div class="row">
                 <article class="col-md-12 text-center">
-                    <h1 class="main-heading main-heading-alt">Portfolio</h1>
+                    <h1 class="main-heading main-heading-alt">{{ config.portfolio_title }}</h1>
                     <div class="liner"><span></span></div>
-                    <p class="promo-text dark-text">We are a full service design agency from the heart of London. We create perfect brands, vibrant identities, outstanding websites and creative concepts.</p>
+                    <p class="promo-text dark-text">{{ config.portfolio_text }}</p>
                 </article>
             </div>
 
@@ -37,11 +37,6 @@
               <div id="filter_wrapper">
                    <ul id="portfolioFilter">
                        <li class="filter" data-filter="all">All</li>
-                       <li class="filter" data-filter="category1">Image Slider</li>
-                       <li class="filter" data-filter="category2">Youtube</li>
-                       <li class="filter" data-filter="category3">Vimeo</li>
-                       <li class="filter" data-filter="category4">Lightbox Photos</li>
-                       <li class="filter" data-filter="category5">Lightbox Video</li>
                    </ul>
               </div>
          </div>
@@ -54,157 +49,25 @@
              <div id="portfolio_thumbs">
 
                   <ul id="grid" class="sortablePortfolio clearfix">
-
-                      <!-- 1st thumb -->
-                      <li class="mix category1 animated" data-fx="flipInX">
-                          <!-- Thumbnail -->
-                          <img alt="" title="" src="/static/dignity/images/portfolio_thumbs/portfolio1.jpg"/>
-                          <!-- Info -->
-                         <a href="projects/project-slider.html" class="more_info">
-                             <div class="item_info">
-                                   <h3><span>Project Title</span></h3>
-                                   <p><span>image slider</span></p>
-                              </div>
-                          </a>
-                      </li>
-
-                      <!-- 2nd thumb -->
-                      <li class="mix category1 animated" data-fx="flipInY">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-youtube.html" class="more_info">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio2.jpg"/>
-                          </a>
-
-                          <!-- Info -->
-                          <a href="projects/project-youtube.html" class="more_info">
-                              <div class="item_info">
-                                   <h3><span>Project Title</span></h3>
-                                   <p><span>youtube</span></p>
-                              </div>
-                          </a>
-                      </li>
-
-                      <!-- 3rd thumb -->
-                      <li class="mix category1 animated" data-fx="flipInX">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-vimeo.html" class="more_info">
-                             <img alt="" title="" src="/static/dignity/images/portfolio_thumbs/portfolio3.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="projects/project-vimeo.html" class="more_info">
-                              <div class="item_info">
-                                   <h3><span>Project Title</span></h3>
-                                   <p><span>vimeo</span></p>
-                              </div>
-                          </a>
-                      </li>
-
-                      <!-- 4th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInY">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-slider.html" class="more_info">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio4.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="projects/project-slider.html" class="more_info">
-                          <div class="item_info">
-                               <h3><span>Project Title</span></h3>
-                               <p><span>image slider</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-                      <!-- 5th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInX">
-                          <!-- Thumbnail -->
-                          <a href="/static/dignity/images/portfolio_zoom/01.jpg" data-gal="prettyPhoto[gallery]">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio5.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="/static/dignity/images/portfolio_zoom/01.jpg" data-gal="prettyPhoto[gallery]">
-                          <div class="item_info">
-                               <h3><span>Project Title</span></h3>
-                               <p><span>lightbox image</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-                      <!-- 6th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInY">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-youtube.html" class="more_info">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio6.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="projects/project-youtube.html" class="more_info">
-                          <div class="item_info">
-                               <h3><span>Project Title</span></h3>
-                               <p><span>youtube</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-                      <!-- 7th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInX">
-                          <!-- Thumbnail -->
-                          <a href="http://www.youtube.com/watch?v=1iIZeIy7TqM" data-gal="prettyPhoto[gallery]">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio7.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="http://www.youtube.com/watch?v=1iIZeIy7TqM" data-gal="prettyPhoto[gallery]">
-                          <div class="item_info">
-                               <h3><span class="next-bg-seven">Project Title</span></h3>
-                               <p><span>lightbox video</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-                      <!-- 8th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInY">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-slider.html" class="more_info">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio8.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="projects/project-slider.html" class="more_info">
-                          <div class="item_info">
-                               <h3><span>Project Title</span></h3>
-                               <p><span>photography</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-                      <!-- 9th thumb -->
-                     <li class="mix category1 animated" data-fx="flipInX">
-                          <!-- Thumbnail -->
-                          <a href="projects/project-vimeo.html" class="more_info">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio9.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="projects/project-vimeo.html" class="more_info">
-                          <div class="item_info">
-                               <h3><span>Project Title</span></h3>
-                               <p><span>vimeo</span></p>
-                          </div>
-                          </a>
-                      </li>
-
-
-                      <!-- 10th thumb -->
-                      <li class="mix category1 animated" data-fx="flipInY">
-                          <!-- Thumbnail -->
-                          <a href="http://www.youtube.com/watch?v=1iIZeIy7TqM" data-gal="prettyPhoto[gallery]">
-                             <img alt="" title=""  src="/static/dignity/images/portfolio_thumbs/portfolio10.jpg"/>
-                          </a>
-                          <!-- Info -->
-                          <a href="http://www.youtube.com/watch?v=1iIZeIy7TqM" data-gal="prettyPhoto[gallery]">
-                          <div class="item_info">
-                               <h3><span class="next-bg-seven">Project Title</span></h3>
-                               <p><span>lightbox video</span></p>
-                          </div>
-                          </a>
-                      </li>
-
+                      {% for portfolio in portfolio_list %}
+                          {% if portfolio.image %}
+                          <!-- 1st thumb -->
+                          <li class="mix animated" data-fx="flipIn{% cycle "X" "Y" %}">
+                              <a href="{% url "portfolio" portfolio.slug %}">
+                              {% thumbnail portfolio.image 400x400 crop quality=100 as thumb %}
+                              <!-- Thumbnail -->
+                              <img alt="" title="" src="{{ thumb.url }}"/>
+                              <!-- Info -->
+                             <span class="more_info">
+                                 <div class="item_info">
+                                       <h3><span>{{ portfolio.title }}</span></h3>
+                                       {% if portfolio.button_value %}<p><span>{{ portfolio.button_value }}</span></p>{% endif %}
+                                  </div>
+                              </span>
+                              </a>
+                          </li>
+                          {% endif %}
+                      {% endfor %}
                   </ul>
 
              </div>
@@ -220,7 +83,7 @@
 	<!-- inner-section : starts -->
 	<section class="inner-section text-center add-top-half animated" data-fx="flash">
         		<nav class="cl-effect-10 btn-dignity-animated">
-			<a data-hover="signup our newsletter" href="#"><span>Don't miss  our updates</span></a>
+			<a data-hover="Contact Us" href="#contact"><span>Contact Us</span></a>
 		</nav>
 	</section>
 	<!-- inner-section : ends -->

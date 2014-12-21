@@ -50,6 +50,7 @@ class ParallaxConfig(models.Model):
 
     testimonials_backdrop = models.FileField(verbose_name="Testimonial Backdrop", upload_to='upload/parallax/', blank=True, null=True)
     is_testimonials_transparent = models.BooleanField(default=True, blank=True)
+    testimonials_text_colour = models.CharField(max_length=255, choices=TEXT_COLOUR_CHOICES, blank=True, null=True)
 
     services_title = models.CharField(max_length=255, blank=True, null=True)
     services_text = models.TextField(blank=True, null=True)
@@ -63,6 +64,7 @@ class ParallaxConfig(models.Model):
     contact_title = models.CharField(max_length=255, blank=True, null=True)
     contact_text = models.TextField(blank=True, null=True)
     contact_location = models.CharField(max_length=255, blank=True, null=True)
+    contact_number = models.CharField(max_length=255, blank=True, null=True)
     contact_email = models.CharField(max_length=255, blank=True, null=True)
 
     social_twitter = models.CharField(max_length=255, blank=True, null=True)
@@ -160,7 +162,7 @@ class Team(models.Model):
     order = models.IntegerField(default=0)
 
     title = models.CharField(max_length=255, blank=False, null=True)
-    description = models.CharField(max_length=255, blank=False, null=True)
+    description = models.TextField(blank=True, null=True)
 
     image = models.FileField(verbose_name="Image", upload_to='upload/parallax/team/', blank=True, null=True)
 
@@ -180,10 +182,10 @@ class Team(models.Model):
         verbose_name_plural = "Team"
 
 class Testimonial(models.Model):
-    emblem = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
-    quote = models.CharField(max_length=255, blank=False, null=True)
-    author = models.CharField(max_length=255)
     display = models.BooleanField(default=True, blank=True)
+    author = models.CharField(max_length=255)
+    emblem = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+    quote = models.TextField(blank=True, null=True)
     order = models.IntegerField(default=0)
 
     created_at = models.DateTimeField(auto_now = True)
@@ -199,12 +201,41 @@ class Testimonial(models.Model):
 
 
 class Portfolio(models.Model):
+
     title = models.CharField(max_length=255)
-    description = models.CharField(max_length=255, blank=False, null=True)
+
+    slug = models.SlugField()
 
     display = models.BooleanField(default=True, blank=True)
-    image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
     order = models.IntegerField(default=0)
+
+    image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
+    button_value = models.CharField(max_length=255, blank=True, null=True)
+
+    description = models.TextField(blank=True, null=True)
+
+    block1_title = models.CharField(verbose_name="Title", max_length=255, blank=True, null=True)
+    block1_standard = models.IntegerField(verbose_name="Standard Icon", blank=True, null=True, default=1)
+    block1_description = models.TextField(verbose_name="Description",blank=True, null=True)
+    block1_image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
+    block2_title = models.CharField(verbose_name="Title",max_length=255, blank=True, null=True)
+    block2_standard = models.IntegerField(verbose_name="Standard Icon",blank=True, null=True, default=2)
+    block2_description = models.TextField(verbose_name="Description",blank=True, null=True)
+    block2_image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
+    block3_title = models.CharField(verbose_name="Title",max_length=255, blank=True, null=True)
+    block3_standard = models.IntegerField(verbose_name="Standard Icon",blank=True, null=True, default=3)
+    block3_description = models.TextField(verbose_name="Description",blank=True, null=True)
+    block3_image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
+    block4_title = models.CharField(verbose_name="Title",max_length=255, blank=True, null=True)
+    block4_standard = models.IntegerField(verbose_name="Standard Icon",blank=True, null=True, default=4)
+    block4_description = models.TextField(verbose_name="Description", blank=True, null=True)
+    block4_image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+
 
     created_at = models.DateTimeField(auto_now = True)
     modified_at = models.DateTimeField(auto_now_add = True)
@@ -212,16 +243,48 @@ class Portfolio(models.Model):
     def __unicode__(self):
         return self.title
 
+    def get_features(self):
+        return self.portfoliofeature_set.filter(display=True)
+
+    def get_images(self):
+        return self.portfolioimage_set.filter(display=True)
+
+
     class Meta:
         ordering = ["order"]
         verbose_name = "Portfolio"
         verbose_name_plural = "Portfolio"
 
+class PortfolioFeature(models.Model):
+    portfolio = models.ForeignKey(Portfolio)
+
+    title = models.CharField(max_length=255)
+
+    display = models.BooleanField(default=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return ""
+
+
+class PortfolioImage(models.Model):
+    portfolio = models.ForeignKey(Portfolio)
+
+    image = models.FileField(verbose_name="Image", upload_to='upload/parallax/portfolio/', blank=True, null=True)
+    display = models.BooleanField(default=True, blank=True)
+
+    created_at = models.DateTimeField(auto_now = True)
+    modified_at = models.DateTimeField(auto_now_add = True)
+
+    def __unicode__(self):
+        return self.portfolio.title
+
+
 class Contact(models.Model):
     name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
     email = models.CharField(max_length=255)
-    contact_number = models.CharField(max_length=30)
     message = models.CharField(max_length=255)
 
     created_at = models.DateTimeField(auto_now = True)

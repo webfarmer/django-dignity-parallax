@@ -1,5 +1,104 @@
 {% extends "parallax/base.html" %}
+{% load thumbnail %}
+
+{% block home_css %}
+    <link href="/static/dignity/stylesheets/home07.css" rel="stylesheet">
+{% endblock %}
+
+{% block nav %}
+<!-- Sliding Navigation : starts -->
+<nav class="menu" id="sm">
+	<div class="sm-wrap">
+		<h1 class="sm-logo">{{ config.site_name_small }}</h1>
+		<i class="icon-remove menu-close"></i>
+		<a  href="/">Home</a>
+        {% if config.is_about %}<a href="/#about">About</a>{% endif %}
+        {% if config.is_service %}<a href="/#services">Services</a>{% endif %}
+        {% if config.is_team %}<a href="/#team">Team</a>{% endif %}
+        {% if config.is_portfolio %}<a href="/#portfolio">Portfolio</a>{% endif %}
+        {% if config.is_contact %}<a href="/#contact">Contact</a>{% endif %}
+        {% if config.alt_link %}<a href="{{ config.alt_link }}">{{ config.alt_link_title }}</a>{% endif %}
+
+	</div>
+	<!-- Navigation Trigger Button -->
+	<div id="sm-trigger"></div>
+</nav>
+<!-- Sliding Navigation : ends -->
+{% endblock %}
 
 {% block content %}
+    {% include header %}
+
+    <!-- page-section : starts -->
+    <section id="about" class="about page-section add-top add-bottom-half">
+
+        <!-- inner-section : starts -->
+        <section class="inner-section about-welcome">
+
+        <!-- container : starts -->
+        <section class="container">
+            <div class="row">
+                <article class="col-md-12 text-center">
+                    {% if config.about_logo %}
+                        <div class="about-emblem">
+                            <img alt="" title="" src="{{ config.about_logo.url }}"/>
+                        </div>
+                    {% else %}
+                        {% if config.logo %}
+                            <div class="about-emblem">
+                                <img alt="" title="" src="{{ config.logo.url }}"/>
+                            </div>
+                        {% else %}
+                            <div class="about-emblem">
+                                <img alt="" title="" src="/static/dignity/images/badge-{{ config.colour }}.png"/>
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                    <h1 class="super-heading animated" data-fx="flipInX">{{ config.about_title }}</h1>
+                    <h1 class="promo-heading animated" data-fx="pulse">{{ portfolio.title }}</h1>
+                </article>
+            </div>
+            <div class="row add-space-min">
+                <article class="col-md-12 text-left">
+                    <h3>{{ page.title }}</h3>
+                    <p>{{ page.content|safe }}</p>
+                </article>
+            </div>
+        </section>
+        <!-- container : ends -->
+
+        </section>
+        <!-- inner-section : ends -->
+        {% with config.get_parallaxconfigaboutimage as about_image_list %}
+        {% if about_image_list %}
+            <!-- inner-section : starts -->
+        <section id="thumb-carousel-wrap" class="inner-section thumb-carousel-wrap">
+                <!-- thumb-carousel : starts -->
+                <div id="thumb-carousel" class="owl-carousel">
+                  {% for image in about_image_list %}
+                    {% if image.display %}
+                          <div class="item animated" data-fx="{% cycle "bounceInDown" "bounceInUp" %}">
+                            {% thumbnail image.image 350x235 crop quality=100 as thumb %}
+                            <a class="image-lightbox-link" href="{{ image.image.url }}">
+                                <img alt="" title="" class="img-responsive" src="{{ thumb.url }}"/>
+                                <div class="thumb-title"><h5><span>{{ image.title }}</span></h5></div>
+                            </a>
+                          </div>
+                    {% endif %}
+                  {% endfor %}
+                </div>
+                <!-- thumb-carousel : ends -->
+        </section>
+        <!-- inner-section : ends -->
+        {% endif %}
+        {% endwith %}
+
+
+    </section>
+    <!-- page-section : ends -->
+
+    {% if config.is_contact %}
+        {% include "parallax/partials/contact.html" %}
+    {% endif %}
 
 {% endblock %}

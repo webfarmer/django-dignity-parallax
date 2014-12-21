@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.http import HttpResponseRedirect
 from models import BlockContent, Page, ParallaxConfig, Contact, ParallaxConfigImage, ParallaxConfigAboutImage, \
-    ParallaxConfigService, Team, Portfolio, Testimonial
+    ParallaxConfigService, Team, Portfolio, Testimonial, PortfolioFeature, PortfolioImage
 
 
 class ParallaxConfigImageInlineAdmin(admin.StackedInline):
@@ -49,7 +49,7 @@ class ParallaxConfigAdmin(admin.ModelAdmin):
        ("Testimonials", {
             'fields': (
                 ('is_testimonials', 'is_testimonials_transparent',),
-                'testimonials_backdrop'
+                'testimonials_text_colour', 'testimonials_backdrop'
             )
         }),
         ("Portfolio", {
@@ -60,8 +60,8 @@ class ParallaxConfigAdmin(admin.ModelAdmin):
         }),
        ("Contact", {
             'fields': (
-                ('is_contact', 'contact_title',),
-                ('contact_location', "contact_email"),
+                ('is_contact', 'contact_title',), "contact_number",
+                ('contact_location', "contact_email",),
                 'contact_text',
             )
         }),
@@ -79,7 +79,7 @@ admin.site.register(ParallaxConfig, ParallaxConfigAdmin)
 
 
 class TestimonialsAdmin(admin.ModelAdmin):
-    list_display = ["quote", 'author', "display", 'order']
+    list_display = ['author', "display", 'order', "quote"]
     list_editable = ('display','order')
     list_filter = ('display',)
 admin.site.register(Testimonial, TestimonialsAdmin)
@@ -89,13 +89,6 @@ class TeamAdmin(admin.ModelAdmin):
     list_editable = ('display','order')
     list_filter = ('display',)
 admin.site.register(Team, TeamAdmin)
-
-class PortfolioAdmin(admin.ModelAdmin):
-    list_display = ['title', "display", 'order']
-    list_editable = ('display','order')
-    list_filter = ('display',)
-admin.site.register(Portfolio, PortfolioAdmin)
-
 
 class BlockContentAdmin(admin.ModelAdmin):
     model = BlockContent
@@ -138,5 +131,36 @@ class PageAdmin(admin.ModelAdmin):
 admin.site.register(Page, PageAdmin)
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'last_name', 'email','contact_number',)
+    list_display = ('name', 'email',)
 admin.site.register(Contact, ContactAdmin)
+
+class PortfolioImageInline(admin.TabularInline):
+    model = PortfolioImage
+
+class PortfolioFeatureInline(admin.TabularInline):
+    model = PortfolioFeature
+
+class PortfolioAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+    fieldsets = (
+        (None, {
+            'fields': (('display','title','slug','order',),'button_value','image','description',),
+            }),
+        ("Block 1", {
+            'fields': (('block1_title', 'block1_standard',), 'block1_image','block1_description',)
+        }),
+        ("Block 2", {
+            'fields': (('block2_title', 'block2_standard',), 'block2_image','block2_description',)
+        }),
+        ("Block 3", {
+            'fields': (('block3_title', 'block3_standard',), 'block3_image','block3_description',)
+        }),
+        ("Block 4", {
+            'fields': (('block4_title', 'block4_standard',), 'block4_image','block4_description',)
+        }),
+    )
+
+    inlines = [PortfolioImageInline, PortfolioFeatureInline]
+    list_display = ('title', 'slug', 'display', 'order', )
+
+admin.site.register(Portfolio, PortfolioAdmin)

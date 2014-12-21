@@ -3,20 +3,23 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Tip of The Tongue Agency</title>
+    <title>{{ config.site_name }}</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tip of The Tongue Agency">
-    <meta name="author" content="">
+
+    <meta name="keywords" content="{{ config.meta_keywords }}">
+    <meta name="description" content="{{ config.meta_description }}">
+    <meta name="author" content="{{ config.meta_author }}">
 
     <!-- Standard Favicon-->
     <link rel="shortcut icon" href="/favicon.ico">
 
     {% include "parallax/assets/css.html" %}
 
+    {% block home_css %}
     <!-- Home Page Styles -->
     <link href="/static/dignity/stylesheets/home{{ config.parallax_id }}.css" rel="stylesheet">
-
+    {% endblock %}
 </head>
 
 <body>
@@ -25,35 +28,15 @@
     <a id="bgndVideo" class="player" data-property="{videoURL:'http://www.youtube.com/watch?v=9s2oYUy_cVY',containment:'body',autoPlay:true, mute:true, startAt:1, opacity:1}">bg</a>
 {% endif %}
 
-{% include "parallax/partials/headers/nav.html" %}
+{% block nav %}
+    {% include "parallax/partials/headers/nav.html" %}
+{% endblock %}
 <!-- Master Wrap : starts -->
 <section id="mastwrap" class="sliding">
-    {% include header %}
-
-    {% if config.is_about %}
-        {% include "parallax/partials/about.html" %}
-    {% endif %} 
-
-    {% if config.is_service %}
-        {% include "parallax/partials/services.html" %}
-    {% endif %}
-
-    {% if config.is_team %}
-        {% include "parallax/partials/team.html" %}
-    {% endif %}
-
-    {% if config.is_testimonials %}
-        {% include "parallax/partials/testimonials.html" %}
-    {% endif %}
-
-    {% if config.is_portfolio %}
-        {% include "parallax/partials/portfolio.html" %}
-    {% endif %}
-
-    {% if config.is_contact %}
-        {% include "parallax/partials/contact.html" %}
-    {% endif %}
-
+    {% block content %}
+        You Should <strong>Not</strong> See This
+    {% endblock %}
+    
     {% include "parallax/partials/footer.html" %}
 
     {% include "parallax/assets/js.html" %}

@@ -1,42 +1,27 @@
+{% load thumbnail %}
+{% if testimonial_list %}
 <!-- page-section : starts -->
+
 <section id="testimonial-carousel-wrap">
-
-        	<!-- testimonial-carousel : starts -->
-        	<div id="testimonial-carousel" class="testimonial-carousel  testimonial-carousel-{{ config.colour }} owl-carousel" data-stellar-background-ratio="1.7">
-
-	          <div class="item">
-	          	<div class="container text-center testimonial-block">
-	          		<img alt="" title="" src="/static/dignity/images/clients/c1.png"/>
-			<article class="col-md-12 arrow-division-dark">
-			</article>
-	          	 	<p class="white-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan."</p>
-	          	 	<h3 class="testimonial-user"><span>John Doe Livingston</span></h3>
-	          	</div>
-	          </div>
-	          <div class="item">
-	          	<div class="container text-center testimonial-block">
-	          		<img alt="" title="" src="/static/dignity/images/clients/c2.png"/>
-			<article class="col-md-12 arrow-division-dark">
-			</article>
-	          	 	<p class="white-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan."</p>
-	          	 	<h3 class="testimonial-user"><span>John Doe Livingston</span></h3>
-	          	</div>
-	          </div>
-	          <div class="item">
-	          	<div class="container text-center testimonial-block">
-	          		<img alt="" title="" src="/static/dignity/images/clients/c3.png"/>
-			<article class="col-md-12 arrow-division-dark">
-			</article>
-	          	 	<p class="white-text">"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque condimentum eros iaculis, lacinia nibh non, scelerisque urna. In sed convallis turpis, non convallis sapien. Sed faucibus ante et felis tempor accumsan."</p>
-	          	 	<h3 class="testimonial-user"><span>John Doe Livingston</span></h3>
-	          	</div>
-	          </div>
-
-        	</div>
-        	<!-- testimonial-carousel-wrap : ends -->
-
-
+    <!-- testimonial-carousel : starts -->
+    <div {% if not config.is_testimonials_transparent %}{% if config.testimonials_backdrop %}style="background-image:url('{{ config.testimonials_backdrop.url }}')"{% endif %}{% endif %} id="testimonial-carousel" class="testimonial-carousel {% if not config.is_testimonials_transparent %}testimonial-carousel-{{ config.colour }}{% endif %} owl-carousel" data-stellar-background-ratio="1.7">
+      {% for item in testimonial_list %}
+      <div class="item">
+        <div class="container text-center testimonial-block">
+            {% if item.emblem %}
+                {% thumbnail item.emblem 110x60 crop quality=100 as thumb %}
+                <img alt="" title="" src="{{ thumb.url }}"/>
+            {% endif %}
+            <article class="col-md-12 arrow-division-{% if config.testimonials_text_colour == "black" %}dark{% else %}light{% endif %}"></article>
+            <p class="{% if config.testimonials_text_colour == "black" %}black{% else %}white{% endif %}-text">"{{ item.quote }}"</p>
+            <h3 class="testimonial-user"><span {% if config.testimonials_text_colour == "white" %}style="color:white; border-color: white"{% endif %}>{{ item.author }}</span></h3>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <!-- testimonial-carousel-wrap : ends -->
 </section>
 <!-- page-section : ends -->
+{% endif %}
 
 

@@ -1,0 +1,33 @@
+{% extends "parallax/base.html" %}
+{% load thumbnail %}
+
+{% block home_css %}
+    <link href="/static/dignity/stylesheets/home07.css" rel="stylesheet">
+{% endblock %}
+
+{% block nav %}
+<!-- Sliding Navigation : starts -->
+<nav class="menu" id="sm">
+	<div class="sm-wrap">
+		<h1 class="sm-logo">{{ config.site_name_small }}</h1>
+		<i class="icon-remove menu-close"></i>
+		<a  href="/">Home</a>
+        {% if config.is_about %}<a href="/#about">About</a>{% endif %}
+        {% if config.is_service %}<a href="/#services">Services</a>{% endif %}
+        {% if config.is_team %}<a href="/#team">Team</a>{% endif %}
+        {% if config.is_portfolio %}<a href="/#portfolio">Portfolio</a>{% endif %}
+        {% if config.is_contact %}<a href="/#contact">Contact</a>{% endif %}
+        {% if config.alt_link %}<a href="{{ config.alt_link }}">{{ config.alt_link_title }}</a>{% endif %}
+
+	</div>
+	<!-- Navigation Trigger Button -->
+	<div id="sm-trigger"></div>
+</nav>
+<!-- Sliding Navigation : ends -->
+{% endblock %}
+
+{% block content %}
+    {% if config.is_contact %}
+        {% include "parallax/partials/contact.html" %}
+    {% endif %}
+{% endblock %}

@@ -9,12 +9,12 @@
 
 		<div class="row">
 			<article class="col-md-6 text-left">
-				<p>Dignity Inc. Mexes Arena, London, UK</p>
-				<p class="phone">+012.345.678.9</p>
+				<p>{{ config.contact_location }}</p>
+				<p class="phone">{{ config.contact_number }}</p>
 			</article>
 			<article class="col-md-6 text-right">
 				<p>Interested in working with us?</p>
-				<a href="#">info@domain.com</a>
+				<a href="mailto:{{ config.contact_email }}">{{ config.contact_email }}</a>
 			</article>
 		</div>
 
@@ -31,17 +31,16 @@
 
 		<div class="row">
 			<article class="col-md-6 text-left">
-				<h3>@twitter</h3>
-			              <article id="ticker" class="query"></article>
+				<h3>@{{ config.social_twitter }}</h3>
 			</article>
 			<article class="col-md-6 text-right">
 				<ul class="footer-social">
-					<li><a href="#"><img alt="" title="" src="/static/dignity/images/footer/01.png"/></a></li>
-					<li><a href="#"><img alt="" title="" src="/static/dignity/images/footer/02.png"/></a></li>
-					<li><a href="#"><img alt="" title="" src="/static/dignity/images/footer/03.png"/></a></li>
+					<li><a href="http://twitter.com/{{ config.social_twitter }}" target="_blank"><img alt="" title="" src="/static/dignity/images/footer/01.png"/></a></li>
+					<li><a href="" target="_blank"><img alt="" title="" src="/static/dignity/images/footer/02.png"/></li>
+					<li><a href="http://www.facebook.com/{{ config.social_facebook }}" target="_blank"><img alt="" title="" src="/static/dignity/images/footer/03.png"/></a></li>
 				</ul>
 				<div class="credits">
-					<p>Premium template by Designova. <br/>Copyright &copy; 2013</p>
+					<p>2014 &copy; All Rights Reserved to {{ config.site_name }}</p>
 				</div>
 			</article>
 		</div>
