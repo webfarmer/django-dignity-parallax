@@ -12,6 +12,7 @@ SITE_DOMAIN = PROJECT_DOMAIN
 
 SECRET_KEY = 'cu&w%kic%b8kw9$=u*jj^w!_+oc*s!zun#=-4$oc^e^7lqyrkt'
 
+DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 DEBUG = True
 TEMPLATE_DEBUG = True
