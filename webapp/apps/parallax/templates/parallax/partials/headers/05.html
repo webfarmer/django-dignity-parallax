@@ -14,7 +14,7 @@
 <!-- masthead : ends -->
 
 <!-- top-banner (variant2 only) : starts -->
-<div id="intro" class="top-banner-caption-v3">
+<div id="intro" class="top-banner-caption-v3" {% if config.backdrop %}style="background-image:url('{{ config.backdrop.url }}')"{% endif %}>
 
 	<div class="vertical-center top-caps3">
         <h3><span style="color: {{ config.text_colour }}">{{ config.title }}</span></h3>

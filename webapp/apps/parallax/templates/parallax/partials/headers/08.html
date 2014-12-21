@@ -6,7 +6,7 @@
 
 <!-- top-banner : starts -->
 
-<div id="intro" class="top-banner-caption-v1" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" data-stellar-horizontal-offset="0">
+<div id="intro" class="top-banner-caption-v1" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0" data-stellar-horizontal-offset="0" {% if config.backdrop %}style="background-image:url('{{ config.backdrop.url }}')"{% endif %}>
 	<section class="intro-overlay">
 		<div class="vertical-center">
             {% if config.logo %}

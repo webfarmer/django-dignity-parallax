@@ -5,7 +5,7 @@
 <!-- masthead : ends -->
 
 <!-- top-banner : starts -->
-<div id="intro">
+<div id="intro" {% if config.backdrop %}style="background-image:url('{{ config.backdrop.url }}')"{% endif %}>
 	<div class="vertical-center top-banner-caption-v1">
 		{% if config.logo %}
             <div class="logo-emblem">

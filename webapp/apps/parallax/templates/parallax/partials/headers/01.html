@@ -5,7 +5,7 @@
 <!-- masthead : ends -->
 
 <!-- top-banner (variant2 only) : starts -->
-<div id="intro" class="top-banner-caption-v6">
+<div id="intro" class="top-banner-caption-v6" {% if config.backdrop %}style="background-image:url('{{ config.backdrop.url }}')"{% endif %}>
 
 	<div class="vertical-center top-caps6">
         <h3 style="color:{{ config.text_colour }}"><span>{{ config.title }}</span></h3>

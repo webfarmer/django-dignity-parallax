@@ -6,7 +6,7 @@
 
 <!-- top-banner (variant2 only) : starts -->
 <section class="intro-parallax-bg" data-stellar-background-ratio="3.5" data-stellar-vertical-offset="0" data-stellar-horizontal-offset="0">
-	<div id="intro" class="top-banner-caption-v9">
+	<div id="intro" class="top-banner-caption-v9" {% if config.backdrop %}style="background-image:url('{{ config.backdrop.url }}')"{% endif %}>
 
 		<div class="vertical-center top-caps4">
             <h3><span style="color:{{ config.text_colour }}">{{ config.title }}</span></h3>
