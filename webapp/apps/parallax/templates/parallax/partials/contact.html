@@ -14,7 +14,7 @@
 		<div class="row">
 
 			<article class="col-md-12 text-center">
-                <p class="promo-text light-text"><span><a style="color:white" href="/">Back Home</a></span></p>
+                {% if page_slug == "/contact/" %}<p class="promo-text light-text"><span><a style="color:white" href="/">Back Home</a></span></p>{% endif %}
 				<h1 class="main-heading main-heading">{{ config.contact_title|safe }}</h1>
 				<div class="liner"><span></span></div>
 				<p class="promo-text light-text">{{ config.contact_text|safe }}</p>
