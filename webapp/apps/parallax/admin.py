@@ -25,6 +25,9 @@ class ParallaxConfigAdmin(admin.ModelAdmin):
         ("Social", {
             'fields': (('social_twitter','social_skype', 'social_facebook',),)
         }),
+        ("Main Header", {
+            'fields': ('title',('subtitle_style',"subtitle",),),
+        }),
         ("Images", {
             'fields': ('logo', 'backdrop',)
         }),

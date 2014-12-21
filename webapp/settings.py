@@ -3,23 +3,20 @@ from django.utils import importlib
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'components'))
 sys.path.append(os.path.join(os.path.dirname(__file__), 'apps'))
-SITES_DIR = os.path.join(os.path.dirname(__file__), 'sites')
-sys.path.append(SITES_DIR)
 
 PROJECT_ROOT = os.path.dirname(__file__); PROJECT_DIR = PROJECT_ROOT
 
-PROJECT_NAME = "Tip Of The Tongue Agency"
-PROJECT_DOMAIN = "http://www.tottagency.com"
+PROJECT_NAME = "Dignity"
+PROJECT_DOMAIN = "http://www.dignity.com"
+SITE_DOMAIN = PROJECT_DOMAIN
 
 SECRET_KEY = 'cu&w%kic%b8kw9$=u*jj^w!_+oc*s!zun#=-4$oc^e^7lqyrkt'
 
-SITE_DOMAIN = "http://www.tottagency.com"
 
 DEBUG = True
 TEMPLATE_DEBUG = True
 
 MIDDLEWARE_CLASSES = (
-    'dynamicsites.middleware.DynamicSitesMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -31,14 +28,7 @@ MIDDLEWARE_CLASSES = (
 )
 
 ROOT_URLCONF = 'urls'
-
 WSGI_APPLICATION = 'wsgi.application'
-
-AUTHENTICATION_BACKENDS = (
-    'accounts.backend.EmailAuthBackend',
-    'django.contrib.auth.backends.ModelBackend',
-)
-LOGIN_REDIRECT_URL = "/shop/"
 
 # ==============================================================================
 # database settings
@@ -60,13 +50,13 @@ DATABASES = {
 # ==============================================================================
 
 ADMINS = (
-    ('Paul Hoft', 'paul@tensology.com'),
+    ('Administrator', 'admin@dignity.com'),
 )
 MANAGERS = ADMINS
 
-WEBCONTACT_RECIPIENTS = ['paul@tensology.com',]
-DEFAULT_FROM_EMAIL = 'info@tensology.com'
-SERVER_EMAIL = 'admin@tensology.com'
+WEBCONTACT_RECIPIENTS = ['admin@dignity.com',]
+DEFAULT_FROM_EMAIL = 'admin@dignity.com'
+SERVER_EMAIL = 'admin@dignity.com'
 
 TEST_EMAIL_DIR = os.path.join(os.path.dirname(__file__), 'tmp', 'test_emails')
 
@@ -78,9 +68,8 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_HOST_USER = ''
 EMAIL_PORT = 1025
 EMAIL_USE_TLS = False
-EMAIL_SYSTEM_SENDER = 'Tip of the Tongue Agency <support@tottagency.com>'
+EMAIL_SYSTEM_SENDER = 'Dignity <support@dignity.com>'
 
-LOGIN_URL = "/login/"
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media')
 LOCKED_MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media_locked')
@@ -109,7 +98,6 @@ FILEBROWSER_PATH_TINYMCE = STATIC_URL + "tinymce/jscripts/tiny_mce/"
 # ==============================================================================
 
 TEMPLATE_CONTEXT_PROCESSORS = (
-    'dynamicsites.context_processors.current_site',
     "django.contrib.auth.context_processors.auth",
     'django.core.context_processors.request',
     "django.core.context_processors.debug",
@@ -150,11 +138,8 @@ DJANGO_CONTRIB_APPS = (
 )
 
 APPS = (
-    'accounts',
     'parallax',
-    'shop',
     'mails',
-    'dynamicsites',
 )
 
 THIRD_PARTY_APPS = (
@@ -162,7 +147,6 @@ THIRD_PARTY_APPS = (
     'debug_toolbar',
     'django_reset',
     'compressor',
-    'translatable',
     'south',
 )
 
@@ -228,7 +212,7 @@ SITE_ID = 1
 
 WPADMIN = {
     'admin': {
-        'title': 'TOTT Agency Admin',
+        'title': '%s Administration' % PROJECT_NAME,
         'menu': {
             'top': 'wpadmin.menu.menus.BasicTopMenu',
             'left': 'wpadmin.menu.menus.BasicLeftMenu',
@@ -236,7 +220,7 @@ WPADMIN = {
         'dashboard': {
             'breadcrumbs': True,
         },
-        'custom_style': STATIC_URL + 'wpadmin/css/themes/ectoplasm.css',
+        'custom_style': STATIC_URL + 'wpadmin/css/themes/midnight.css',
     }
 }
 
@@ -246,10 +230,5 @@ WPADMIN = {
 # ==============================================================================
 try:
     from settings_local import *
-except ImportError:
-    pass
-
-try:
-    from settings_sites import *
 except ImportError:
     pass
