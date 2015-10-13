@@ -14,6 +14,7 @@ https://github.com/barszczmm/django-wpadmin
 This project is great for bootstrapping your startup- it's very awesome for those of you who want the Dignity template
 as dynamic as possible (Django is also a massive benefit).
 
+```
 Features:
 1. Choose between the four template colors: Blue, Yellow, Red, Green
 2. The backgrounds are dynamic so you can load in as many images as you want.
@@ -29,6 +30,7 @@ Installation:
 4. Configure your database/debug settings in settings_local.py
 5. $python manage.py syncdb --migrate
 6. $python manage.py runserver
+```
 
 Please note, this project does use easy-thumbnails==1.3 to crop images on the Dignity template - in order to have the jpeg's
 supported and cropping correctly, you will need PIL (or pillow - whatever works for you). PIL always gives me issues
