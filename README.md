@@ -1,7 +1,8 @@
 django-dignity-parallax
 =======================
 
-Dignity (http://themeforest.net/item/dignity-simple-portfolio-responsive-retina-html5/6021446).
+Dignity: http://themeforest.net/item/dignity-simple-portfolio-responsive-retina-html5/6021446
+
 Dignity is a simple & easily reusable web template with a clean design and neat arrangement of contents.
 A perfect onepage portfolio for all creatives.
 
